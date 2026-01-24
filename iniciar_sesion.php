@@ -10,15 +10,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($correo && $contrasena) {
         // Consultar usuario
-        $consulta = $conexion->prepare("SELECT id, username, password, role FROM users WHERE email = :correo");
+        $consulta = $conexion->prepare("SELECT id, usuario, clave, rol FROM usuarios WHERE email = :correo");
         $consulta->execute(['correo' => $correo]);
         $usuario = $consulta->fetch();
 
-        if ($usuario && password_verify($contrasena, $usuario['password'])) {
+        if ($usuario && password_verify($contrasena, $usuario['clave'])) {
             // Inicio de sesión exitoso
             $_SESSION['id_usuario'] = $usuario['id'];
-            $_SESSION['nombre_usuario'] = $usuario['username'];
-            $_SESSION['rol'] = $usuario['role'];
+            $_SESSION['nombre_usuario'] = $usuario['usuario'];
+            $_SESSION['rol'] = $usuario['rol'];
 
             header('Location: panel.php');
             exit;

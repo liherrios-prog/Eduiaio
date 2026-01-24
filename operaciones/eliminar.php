@@ -10,7 +10,7 @@ if (!isset($_SESSION['id_usuario'])) {
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
 if ($id) {
-    $consulta = $conexion->prepare("DELETE FROM courses WHERE id = ?");
+    $consulta = $conexion->prepare("DELETE FROM cursos WHERE id = ?");
     $consulta->execute([$id]);
 }
 

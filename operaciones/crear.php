@@ -8,7 +8,7 @@ if (!isset($_SESSION['id_usuario'])) {
 }
 
 // Obtener Categorías para Desplegable (FK)
-$consulta = $conexion->query("SELECT * FROM categories ORDER BY name ASC");
+$consulta = $conexion->query("SELECT * FROM categorias ORDER BY nombre ASC");
 $categorias = $consulta->fetchAll();
 
 $error = '';
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($titulo && $precio !== false && $id_categoria) {
         try {
-            $consulta = $conexion->prepare("INSERT INTO courses (title, description, price, category_id, created_by) VALUES (?, ?, ?, ?, ?)");
+            $consulta = $conexion->prepare("INSERT INTO cursos (titulo, descripcion, precio, categoria_id, creado_por) VALUES (?, ?, ?, ?, ?)");
             $consulta->execute([$titulo, $descripcion, $precio, $id_categoria, $_SESSION['id_usuario']]);
             header('Location: listar.php');
             exit;
@@ -84,13 +84,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <option value="">Seleccione una categoría...</option>
                             <?php foreach ($categorias as $categoria): ?>
                                 <option value="<?= $categoria['id'] ?>">
-                                    <?= htmlspecialchars($categoria['name']) ?>
+                                    <?= htmlspecialchars($categoria['nombre']) ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
                         <small style="color: var(--texto-secundario); font-size: 0.75rem;">Este desplegable carga las FK
                             de la
-                            tabla 'categories'</small>
+                            tabla 'categorias'</small>
                     </div>
                 </div>
 

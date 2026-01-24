@@ -9,11 +9,11 @@ if (!isset($_SESSION['id_usuario'])) {
 
 // Obtener Cursos con Nombre de Categoría usando JOIN
 $consulta = $conexion->query("
-    SELECT courses.*, categories.name as nombre_categoria, users.username as instructor
-    FROM courses 
-    LEFT JOIN categories ON courses.category_id = categories.id
-    LEFT JOIN users ON courses.created_by = users.id
-    ORDER BY courses.created_at DESC
+    SELECT cursos.*, categorias.nombre as nombre_categoria, usuarios.usuario as instructor
+    FROM cursos 
+    LEFT JOIN categorias ON cursos.categoria_id = categorias.id
+    LEFT JOIN usuarios ON cursos.creado_por = usuarios.id
+    ORDER BY cursos.fecha_creacion DESC
 ");
 $cursos = $consulta->fetchAll();
 ?>
@@ -65,10 +65,10 @@ $cursos = $consulta->fetchAll();
                             </td>
                             <td style="padding: 1rem;">
                                 <div style="font-weight: 600;">
-                                    <?= htmlspecialchars($curso['title']) ?>
+                                    <?= htmlspecialchars($curso['titulo']) ?>
                                 </div>
                                 <small style="color: var(--texto-secundario);">
-                                    <?= htmlspecialchars(substr($curso['description'], 0, 50)) ?>...
+                                    <?= htmlspecialchars(substr($curso['descripcion'], 0, 50)) ?>...
                                 </small>
                             </td>
                             <td style="padding: 1rem;">
@@ -78,7 +78,7 @@ $cursos = $consulta->fetchAll();
                                 </span>
                             </td>
                             <td style="padding: 1rem; font-weight: 600;">
-                                <?= number_format($curso['price'], 2) ?> €
+                                <?= number_format($curso['precio'], 2) ?> €
                             </td>
                             <td style="padding: 1rem; color: var(--texto-secundario);">
                                 <?= htmlspecialchars($curso['instructor'] ?? 'Sistema') ?>

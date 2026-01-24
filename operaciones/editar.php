@@ -14,10 +14,10 @@ if (!$id) {
 }
 
 // Obtener Categorías (FK)
-$categorias = $conexion->query("SELECT * FROM categories ORDER BY name ASC")->fetchAll();
+$categorias = $conexion->query("SELECT * FROM categorias ORDER BY nombre ASC")->fetchAll();
 
 // Obtener Curso Actual
-$consulta = $conexion->prepare("SELECT * FROM courses WHERE id = ?");
+$consulta = $conexion->prepare("SELECT * FROM cursos WHERE id = ?");
 $consulta->execute([$id]);
 $curso = $consulta->fetch();
 
@@ -34,10 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_categoria = filter_input(INPUT_POST, 'id_categoria', FILTER_VALIDATE_INT);
 
     if ($titulo && $precio !== false && $id_categoria) {
-        $consultaActualizar = $conexion->prepare("UPDATE courses SET title=?, description=?, price=?, category_id=? WHERE id=?");
+        $consultaActualizar = $conexion->prepare("UPDATE cursos SET titulo=?, descripcion=?, precio=?, categoria_id=? WHERE id=?");
         $consultaActualizar->execute([$titulo, $descripcion, $precio, $id_categoria, $id]);
 
-        // El Trigger 'after_course_update' se ejecuta automáticamente aquí
+        // El Trigger 'despues_actualizacion_curso' se ejecuta automáticamente aquí
 
         header('Location: listar.php');
         exit;
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="contenedor" style="max-width: 800px;">
         <div class="tarjeta">
             <h2>Editar Curso:
-                <?= htmlspecialchars($curso['title']) ?>
+                <?= htmlspecialchars($curso['titulo']) ?>
             </h2>
 
             <?php if ($error): ?>
@@ -73,20 +73,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <form method="POST">
                 <div class="grupo-formulario">
                     <label class="etiqueta-formulario">Título</label>
-                    <input type="text" name="titulo" value="<?= htmlspecialchars($curso['title']) ?>"
+                    <input type="text" name="titulo" value="<?= htmlspecialchars($curso['titulo']) ?>"
                         class="control-formulario" required>
                 </div>
 
                 <div class="grupo-formulario">
                     <label class="etiqueta-formulario">Descripción</label>
                     <textarea name="descripcion" class="control-formulario"
-                        rows="3"><?= htmlspecialchars($curso['description']) ?></textarea>
+                        rows="3"><?= htmlspecialchars($curso['descripcion']) ?></textarea>
                 </div>
 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                     <div class="grupo-formulario">
                         <label class="etiqueta-formulario">Precio (€)</label>
-                        <input type="number" step="0.01" name="precio" value="<?= $curso['price'] ?>"
+                        <input type="number" step="0.01" name="precio" value="<?= $curso['precio'] ?>"
                             class="control-formulario" required>
                     </div>
 
@@ -94,9 +94,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label class="etiqueta-formulario">Categoría</label>
                         <select name="id_categoria" class="control-formulario" required>
                             <?php foreach ($categorias as $categoria): ?>
-                                <option value="<?= $categoria['id'] ?>" <?= $categoria['id'] == $curso['category_id'] ? 'selected' : '' ?>
+                                <option value="<?= $categoria['id'] ?>" <?= $categoria['id'] == $curso['categoria_id'] ? 'selected' : '' ?>
                                     >
-                                    <?= htmlspecialchars($categoria['name']) ?>
+                                    <?= htmlspecialchars($categoria['nombre']) ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
