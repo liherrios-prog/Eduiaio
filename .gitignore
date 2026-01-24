@@ -1,0 +1,39 @@
+# Dependencias
+/vendor/
+/node_modules/
+
+# Configuración local (si contiene credenciales sensibles)
+# configuracion/conexion.php
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos de IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Logs y archivos temporales
+*.log
+*.tmp
+*.temp
+*.cache
+
+# Archivos de respaldo
+*.bak
+*.backup
+*~
+
+# Archivos de configuración PHP local
+php.ini
+.user.ini
+
+# Archivos subidos por usuarios (si aplica)
+/uploads/
+/archivos_subidos/
+
+# Documentos de Word (opcional - descomenta si no quieres incluirlos)
+# docs/*.docx
