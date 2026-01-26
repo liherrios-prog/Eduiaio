@@ -4,14 +4,21 @@ Sistema de gestión de cursos educativos desarrollado en PHP con MySQL.
 
 ## 📋 Descripción
 
-EDUIAIO es una plataforma web para la gestión de cursos online. Incluye:
+EDUIAIO es una plataforma educativa diseñada para **reducir la brecha digital en personas mayores**.
 
-- ✅ Sistema de autenticación (login/logout)
-- ✅ Panel de administración
-- ✅ CRUD completo de cursos
-- ✅ Categorías con relaciones (Foreign Keys)
-- ✅ Trigger de auditoría para cambios de precio
-- ✅ Diseño moderno y responsive
+Ofrecemos cursos sencillos y prácticos para que cualquier persona, sin importar su edad, pueda aprender a usar la tecnología con confianza.
+
+- ✅ **Público Objetivo**: Jubilados y personas mayores.
+- ✅ **Iniciación Digital**: Desde encender el móvil hasta usar el ordenador.
+- ✅ **Vida Diaria**: WhatsApp, Banca Online, Citas Médicas.
+- ✅ **Ocio**: YouTube, Viajes y Fotografía.
+- ✅ **Seguridad**: Aprende a navegar sin riesgos.
+
+El sistema incluye:
+- ✅ Sistema de autenticación
+- ✅ Panel de administración simple
+- ✅ Gestión de cursos adaptados
+- ✅ Auditoría de cambios de precio
 
 ## 🛠️ Requisitos Previos
 
@@ -110,3 +117,8 @@ Este proyecto es de uso educativo.
 ---
 
 Desarrollado para el curso de Desarrollo de Aplicaciones Web 🎓
+
+
+
+Triggers de bd de insrt y delete.
+Ampliar la BD.

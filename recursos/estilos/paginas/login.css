@@ -1,0 +1,57 @@
+/* Contenedor de Login */
+.contenedor-login {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+}
+
+/* Tarjeta de Login */
+.tarjeta-login {
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    padding: 3rem;
+    border-radius: 1.5rem;
+    box-shadow: var(--sombra-lg);
+}
+
+.cabecera-login {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.cabecera-login h1 {
+    font-size: 2rem;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+
+.cabecera-login p {
+    color: #6B7280;
+}
+
+/* Botón de Login */
+.btn-login {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+}
+
+/* Información de Credenciales Demo */
+.info-credenciales {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: #6B7280;
+}
+
+.info-credenciales code {
+    display: block;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background: #F3F4F6;
+    border-radius: 0.25rem;
+    font-family: 'Courier New', monospace;
+}

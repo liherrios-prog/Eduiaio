@@ -58,14 +58,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <div class="contenedor" style="max-width: 800px;">
+    <div class="contenedor contenedor-medio">
         <div class="tarjeta">
             <h2>Editar Curso:
                 <?= htmlspecialchars($curso['titulo']) ?>
             </h2>
 
             <?php if ($error): ?>
-                <div style="background: #FEE2E2; color: #991B1B; padding: 1rem; margin-bottom: 1rem;">
+                <div class="alerta-error">
                     <?= $error ?>
                 </div>
             <?php endif; ?>
@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         rows="3"><?= htmlspecialchars($curso['descripcion']) ?></textarea>
                 </div>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="grid-2-col">
                     <div class="grupo-formulario">
                         <label class="etiqueta-formulario">Precio (€)</label>
                         <input type="number" step="0.01" name="precio" value="<?= $curso['precio'] ?>"
@@ -103,9 +103,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 </div>
 
-                <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+                <div class="botones-accion">
                     <button type="submit" class="btn btn-primario">Actualizar Curso</button>
-                    <a href="listar.php" class="btn" style="background: #F3F4F6;">Cancelar</a>
+                    <a href="listar.php" class="btn btn-secundario">Cancelar</a>
                 </div>
             </form>
         </div>

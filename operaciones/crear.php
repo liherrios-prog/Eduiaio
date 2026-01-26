@@ -47,13 +47,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <div class="contenedor" style="max-width: 800px;">
+    <div class="contenedor contenedor-medio">
         <div class="tarjeta">
-            <h2 style="margin-top: 0; margin-bottom: 1.5rem;">Añadir Nuevo Curso</h2>
+            <h2 class="margen-sup-0 margen-inf-1-5">Añadir Nuevo Curso</h2>
 
             <?php if ($error): ?>
-                <div
-                    style="background: #FEE2E2; color: #991B1B; padding: 1rem; border-radius: 0.5rem; margin-bottom: 1.5rem;">
+                <div class="alerta-error">
                     <?= $error ?>
                 </div>
             <?php endif; ?>
@@ -71,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         placeholder="Detalles del temario..."></textarea>
                 </div>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="grid-2-col">
                     <div class="grupo-formulario">
                         <label class="etiqueta-formulario">Precio (€)</label>
                         <input type="number" step="0.01" name="precio" class="control-formulario" placeholder="0.00"
@@ -88,15 +87,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <small style="color: var(--texto-secundario); font-size: 0.75rem;">Este desplegable carga las FK
+                        <small class="color-secundario texto-chico">Este desplegable carga las FK
                             de la
                             tabla 'categorias'</small>
                     </div>
                 </div>
 
-                <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+                <div class="botones-accion">
                     <button type="submit" class="btn btn-primario">Guardar Curso</button>
-                    <a href="listar.php" class="btn" style="background: #F3F4F6;">Cancelar</a>
+                    <a href="listar.php" class="btn btn-secundario">Cancelar</a>
                 </div>
             </form>
         </div>

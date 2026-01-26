@@ -32,62 +32,59 @@ $cursos = $consulta->fetchAll();
 <body>
     <div class="contenedor">
         <!-- Cabecera -->
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <div class="cabecera-lista">
             <div>
-                <h1 style="margin: 0;">Lista de Cursos</h1>
-                <p style="color: var(--texto-secundario);">Administra la oferta educativa</p>
+                <h1 class="titulo-lista">Lista de Cursos</h1>
+                <p class="subtitulo-lista">Administra la oferta educativa</p>
             </div>
-            <div style="display: flex; gap: 1rem;">
-                <a href="../panel.php" class="btn" style="background: white; border: 1px solid #D1D5DB;">Volver al
-                    Panel</a>
+            <div class="acciones-cabecera">
+                <a href="../panel.php" class="btn btn-volver">Volver al Panel</a>
+                <a href="crear_categoria.php" class="btn btn-claro" style="margin-right: 0.5rem;">+ Nueva Categoría</a>
                 <a href="crear.php" class="btn btn-primario">+ Nuevo Curso</a>
             </div>
         </div>
 
         <!-- Tarjeta con Tabla -->
-        <div class="tarjeta" style="overflow-x: auto;">
-            <table style="width: 100%; border-collapse: collapse;">
+        <div class="tarjeta contenedor-tabla">
+            <table class="tabla-base">
                 <thead>
-                    <tr style="text-align: left; border-bottom: 2px solid #F3F4F6;">
-                        <th style="padding: 1rem; color: var(--texto-secundario);">ID</th>
-                        <th style="padding: 1rem; color: var(--texto-secundario);">Curso</th>
-                        <th style="padding: 1rem; color: var(--texto-secundario);">Categoría</th>
-                        <th style="padding: 1rem; color: var(--texto-secundario);">Precio</th>
-                        <th style="padding: 1rem; color: var(--texto-secundario);">Creado Por</th>
-                        <th style="padding: 1rem; color: var(--texto-secundario); text-align: right;">Acciones</th>
+                    <tr>
+                        <th>ID</th>
+                        <th>Curso</th>
+                        <th>Categoría</th>
+                        <th>Precio</th>
+                        <th>Creado Por</th>
+                        <th class="td-derecha">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($cursos as $curso): ?>
-                        <tr style="border-bottom: 1px solid #F3F4F6;">
-                            <td style="padding: 1rem; font-weight: 500;">#
+                        <tr class="fila-tabla">
+                            <td style="font-weight: 500;">#
                                 <?= $curso['id'] ?>
                             </td>
-                            <td style="padding: 1rem;">
-                                <div style="font-weight: 600;">
+                            <td class="celda-curso">
+                                <div class="titulo-curso">
                                     <?= htmlspecialchars($curso['titulo']) ?>
                                 </div>
-                                <small style="color: var(--texto-secundario);">
+                                <small class="descripcion-curso">
                                     <?= htmlspecialchars(substr($curso['descripcion'], 0, 50)) ?>...
                                 </small>
                             </td>
-                            <td style="padding: 1rem;">
-                                <span
-                                    style="background: #EEF2FF; color: var(--color-primario); padding: 0.25rem 0.5rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600;">
+                            <td>
+                                <span class="badge-categoria">
                                     <?= htmlspecialchars($curso['nombre_categoria'] ?? 'Sin Categoría') ?>
                                 </span>
                             </td>
-                            <td style="padding: 1rem; font-weight: 600;">
+                            <td class="precio-curso">
                                 <?= number_format($curso['precio'], 2) ?> €
                             </td>
-                            <td style="padding: 1rem; color: var(--texto-secundario);">
+                            <td style="color: var(--texto-secundario);">
                                 <?= htmlspecialchars($curso['instructor'] ?? 'Sistema') ?>
                             </td>
-                            <td style="padding: 1rem; text-align: right;">
-                                <a href="editar.php?id=<?= $curso['id'] ?>" class="btn"
-                                    style="color: var(--color-primario); padding: 0.25rem 0.5rem; margin-right: 0.5rem;">Editar</a>
-                                <a href="eliminar.php?id=<?= $curso['id'] ?>" class="btn"
-                                    style="color: var(--color-peligro); padding: 0.25rem 0.5rem;"
+                            <td class="td-derecha">
+                                <a href="editar.php?id=<?= $curso['id'] ?>" class="btn btn-texto-primario">Editar</a>
+                                <a href="eliminar.php?id=<?= $curso['id'] ?>" class="btn btn-texto-peligro"
                                     onclick="return confirm('¿Estás seguro de eliminar este curso?');">Eliminar</a>
                             </td>
                         </tr>
@@ -96,7 +93,7 @@ $cursos = $consulta->fetchAll();
             </table>
 
             <?php if (empty($cursos)): ?>
-                <div style="text-align: center; padding: 2rem; color: var(--texto-secundario);">
+                <div class="mensaje-vacio">
                     No hay cursos registrados. ¡Crea el primero!
                 </div>
             <?php endif; ?>

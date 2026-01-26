@@ -7,7 +7,7 @@ if (isset($_SESSION['id_usuario'])) {
     exit;
 }
 
-// Si no, ir al Inicio de Sesión
-header('Location: iniciar_sesion.php');
+// Si no, mostrar la landing page
+header('Location: landing_page.php');
 exit;
 ?>

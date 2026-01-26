@@ -43,16 +43,78 @@ CREATE TABLE IF NOT EXISTS auditoria (
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Trigger: Registrar Actualizaciones de Cursos
+-- TRIGGERS DE AUDITORIA
 DELIMITER //
+
+-- CURSOS: Actualización de Precio (Original)
 CREATE TRIGGER despues_actualizacion_curso
 AFTER UPDATE ON cursos
 FOR EACH ROW
 BEGIN
+    IF OLD.precio != NEW.precio THEN
+        INSERT INTO auditoria (tabla, accion, registro_id, detalles)
+        VALUES ('cursos', 'ACTUALIZAR', OLD.id, CONCAT('Precio cambiado de ', OLD.precio, ' a ', NEW.precio));
+    END IF;
+END//
+
+-- CURSOS: Insertar y Eliminar
+CREATE TRIGGER cursos_insert AFTER INSERT ON cursos
+FOR EACH ROW BEGIN
     INSERT INTO auditoria (tabla, accion, registro_id, detalles)
-    VALUES ('cursos', 'ACTUALIZAR', OLD.id, CONCAT('Precio cambiado de ', OLD.precio, ' a ', NEW.precio));
-END;
-//
+    VALUES ('cursos', 'INSERTAR', NEW.id, CONCAT('Nuevo curso creado: ', NEW.titulo));
+END//
+
+CREATE TRIGGER cursos_delete AFTER DELETE ON cursos
+FOR EACH ROW BEGIN
+    INSERT INTO auditoria (tabla, accion, registro_id, detalles)
+    VALUES ('cursos', 'ELIMINAR', OLD.id, CONCAT('Curso eliminado: ', OLD.titulo));
+END//
+
+-- USUARIOS: Insertar, Actualizar, Eliminar
+CREATE TRIGGER usuarios_insert AFTER INSERT ON usuarios
+FOR EACH ROW BEGIN
+    INSERT INTO auditoria (tabla, accion, registro_id, detalles)
+    VALUES ('usuarios', 'INSERTAR', NEW.id, CONCAT('Nuevo usuario registrado: ', NEW.usuario, ' (Rol: ', NEW.rol, ')'));
+END//
+
+CREATE TRIGGER usuarios_update AFTER UPDATE ON usuarios
+FOR EACH ROW BEGIN
+    DECLARE cambios TEXT DEFAULT '';
+    IF OLD.rol != NEW.rol THEN SET cambios = CONCAT(cambios, 'Rol cambiado de ', OLD.rol, ' a ', NEW.rol, '. '); END IF;
+    IF OLD.email != NEW.email THEN SET cambios = CONCAT(cambios, 'Email cambiado de ', OLD.email, ' a ', NEW.email, '. '); END IF;
+    IF cambios != '' THEN
+        INSERT INTO auditoria (tabla, accion, registro_id, detalles)
+        VALUES ('usuarios', 'ACTUALIZAR', OLD.id, cambios);
+    END IF;
+END//
+
+CREATE TRIGGER usuarios_delete AFTER DELETE ON usuarios
+FOR EACH ROW BEGIN
+    INSERT INTO auditoria (tabla, accion, registro_id, detalles)
+    VALUES ('usuarios', 'ELIMINAR', OLD.id, CONCAT('Usuario eliminado: ', OLD.usuario));
+END//
+
+-- CATEGORIAS: Insertar, Actualizar, Eliminar
+CREATE TRIGGER categorias_insert AFTER INSERT ON categorias
+FOR EACH ROW BEGIN
+    INSERT INTO auditoria (tabla, accion, registro_id, detalles)
+    VALUES ('categorias', 'INSERTAR', NEW.id, CONCAT('Nueva categoría creada: ', NEW.nombre));
+END//
+
+CREATE TRIGGER categorias_update AFTER UPDATE ON categorias
+FOR EACH ROW BEGIN
+    IF OLD.nombre != NEW.nombre THEN
+        INSERT INTO auditoria (tabla, accion, registro_id, detalles)
+        VALUES ('categorias', 'ACTUALIZAR', OLD.id, CONCAT('Nombre de categoría cambiado de ', OLD.nombre, ' a ', NEW.nombre));
+    END IF;
+END//
+
+CREATE TRIGGER categorias_delete AFTER DELETE ON categorias
+FOR EACH ROW BEGIN
+    INSERT INTO auditoria (tabla, accion, registro_id, detalles)
+    VALUES ('categorias', 'ELIMINAR', OLD.id, CONCAT('Categoría eliminada: ', OLD.nombre));
+END//
+
 DELIMITER ;
 
 -- Insertar Datos Por Defecto
@@ -60,7 +122,7 @@ DELIMITER ;
 INSERT INTO usuarios (usuario, email, clave, rol) VALUES 
 ('admin', 'admin@eduiaio.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin');
 
--- Categorías adaptadas al público objetivo (Personas mayores/Jubilados)
+-- Categorías adaptadas
 INSERT INTO categorias (nombre, descripcion) VALUES 
 ('Iniciación Digital', 'Primeros pasos con ordenadores, tablets y móviles'),
 ('Comunicación y Redes', 'WhatsApp, Videollamadas y Redes Sociales para conectar con la familia'),

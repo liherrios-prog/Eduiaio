@@ -47,12 +47,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="tarjeta-login">
             <div class="cabecera-login">
                 <h1>EDUIAIO</h1>
-                <p style="color: #6B7280;">Bienvenido de nuevo</p>
+                <p>Bienvenido de nuevo</p>
             </div>
 
             <?php if ($error): ?>
-                <div
-                    style="background: #FEE2E2; color: #991B1B; padding: 1rem; border-radius: 0.5rem; margin-bottom: 1.5rem; text-align: center;">
+                <div class="alerta-error">
                     <?= htmlspecialchars($error) ?>
                 </div>
             <?php endif; ?>
@@ -64,20 +63,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         placeholder="admin@eduiaio.com" required>
                 </div>
 
+
                 <div class="grupo-formulario">
                     <label class="etiqueta-formulario" for="contrasena">Contraseña</label>
                     <input type="password" id="contrasena" name="contrasena" class="control-formulario"
                         placeholder="••••••••" required>
                 </div>
 
-                <button type="submit" class="btn btn-primario" style="width: 100%; padding: 0.75rem; font-size: 1rem;">
+                <button type="submit" class="btn btn-primario btn-login">
                     Iniciar Sesión
                 </button>
             </form>
 
-            <div style="margin-top: 1.5rem; text-align: center; font-size: 0.875rem; color: #6B7280;">
+            <div class="info-credenciales">
                 <p>Credenciales Demo:</p>
                 <code>admin@eduiaio.com / password</code>
+            </div>
+
+            <div class="pie-login" style="text-align: center; margin-top: 1.5rem; border-top: 1px solid var(--borde-color); padding-top: 1rem;">
+                <p style="color: var(--texto-secundario);">¿Eres alumno nuevo? <a href="registro.php" style="color: var(--color-primario); text-decoration: none; font-weight: 500;">Regístrate aquí</a></p>
             </div>
         </div>
     </div>

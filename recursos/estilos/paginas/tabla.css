@@ -1,0 +1,95 @@
+/* Contenedor de Tabla */
+.contenedor-tabla {
+    overflow-x: auto;
+}
+
+/* Tabla Base */
+.tabla-base {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-base thead {
+    text-align: left;
+    border-bottom: 2px solid #F3F4F6;
+}
+
+.tabla-base th {
+    padding: 1rem;
+    color: var(--texto-secundario);
+}
+
+.tabla-base tbody tr {
+    border-bottom: 1px solid #F3F4F6;
+}
+
+.tabla-base td {
+    padding: 1rem;
+}
+
+.tabla-base .td-derecha {
+    text-align: right;
+}
+
+/* Estilos específicos para filas de tabla */
+.fila-tabla {
+    border-bottom: 1px solid #F3F4F6;
+}
+
+.fila-tabla:hover {
+    background-color: #F9FAFB;
+}
+
+/* Celda con título y descripción */
+.celda-curso {
+    padding: 1rem;
+}
+
+.titulo-curso {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.descripcion-curso {
+    color: var(--texto-secundario);
+    font-size: 0.875rem;
+}
+
+/* Precio */
+.precio-curso {
+    padding: 1rem;
+    font-weight: 600;
+}
+
+/* Mensaje Vacío */
+.mensaje-vacio {
+    text-align: center;
+    padding: 2rem;
+    color: var(--texto-secundario);
+}
+
+/* Cabecera de Lista */
+.cabecera-lista {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.titulo-lista {
+    margin: 0;
+}
+
+.subtitulo-lista {
+    color: var(--texto-secundario);
+}
+
+.acciones-cabecera {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-volver {
+    background: white;
+    border: 1px solid #D1D5DB;
+}
