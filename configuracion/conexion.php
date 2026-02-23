@@ -6,7 +6,9 @@ $usuario = 'root';
 $contrasena = ''; // XAMPP por defecto es vacío
 
 try {
-    $conexion = new PDO("mysql:host=$servidor;dbname=$nombre_bd;charset=utf8", $usuario, $contrasena);
+    $conexion = new PDO("mysql:host=$servidor;dbname=$nombre_bd;charset=utf8mb4", $usuario, $contrasena);
+    // Forzar el uso de utf8mb4 en todas las consultas
+    $conexion->exec("SET NAMES utf8mb4");
 
     // Configurar PDO para lanzar excepciones en caso de error
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

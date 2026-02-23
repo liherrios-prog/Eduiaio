@@ -4,7 +4,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+    background: #18181b;
+    /* Zinc 900 background for login page match landing */
 }
 
 /* Tarjeta de Login */

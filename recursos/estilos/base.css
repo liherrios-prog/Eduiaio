@@ -1,26 +1,44 @@
+/**
+ * recursos/estilos/base.css
+ *
+ * Variables CSS y estilos globales del proyecto.
+ * Todos los demás archivos usan las variables definidas aquí.
+ */
+
+/* ============================================================
+   Variables CSS (Design Tokens)
+   Modifica este bloque para cambiar colores y formas globalmente.
+   ============================================================ */
 :root {
-    /* Paleta de Colores - Tema Premium Oscuro/Azul */
-    --color-primario: #4F46E5;
-    /* Indigo 600 */
-    --color-primario-hover: #4338ca;
+    /* Colores principales */
+    --color-primario: #18181b;
+    /* Zinc 900 — color principal (botones, enlaces) */
+    --color-primario-hover: #27272a;
+    /* Zinc 800 — hover del color principal */
     --color-fondo: #F3F4F6;
-    /* Gris 100 */
+    /* Fondo de la aplicación */
     --color-superficie: #FFFFFF;
-    --texto-principal: #111827;
-    /* Gris 900 */
-    --texto-secundario: #6B7280;
-    /* Gris 500 */
-    --color-acento: #10B981;
-    /* Esmeralda 500 */
-    --color-peligro: #EF4444;
-    /* Rojo 500 */
+    /* Fondo de tarjetas y paneles */
 
-    --sombra-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --sombra-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --sombra-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    /* Texto */
+    --texto-principal: #18181b;
+    /* Zinc 900 */
+    --texto-secundario: #71717a;
+    /* Zinc 500 — subtítulos y metadatos */
 
-    --radio-md: 0.5rem;
-    --radio-lg: 1rem;
+    /* Estados */
+    --color-peligro: #ef4444;
+    /* Rojo — acciones destructivas */
+    --color-acento: #3b82f6;
+    /* Azul — resaltados y links */
+
+    /* Sombras */
+    --sombra-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --sombra-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+    /* Bordes redondeados */
+    --radio-md: 0.25rem;
+    --radio-lg: 0.5rem;
 }
 
 body {

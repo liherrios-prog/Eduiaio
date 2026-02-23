@@ -1,13 +1,22 @@
-/* Archivo principal que importa todos los estilos organizados */
+/**
+ * recursos/estilos/estilos.css
+ *
+ * Punto de entrada principal de estilos.
+ * Importa todos los archivos CSS en el orden correcto:
+ *   1. base.css       — variables CSS y reset global
+ *   2. componentes.css — botones, tarjetas, formularios, badges…
+ *   3. paginas/       — estilos específicos de cada sección
+ */
 
-/* Base - Variables y estilos fundamentales */
+/* 1. Base: variables y reset */
 @import url('base.css');
 
-/* Componentes reutilizables */
+/* 2. Componentes reutilizables */
 @import url('componentes.css');
 
-/* Estilos específicos de páginas */
+/* 3. Estilos de páginas */
 @import url('paginas/landing.css');
 @import url('paginas/login.css');
 @import url('paginas/panel.css');
 @import url('paginas/tabla.css');
+@import url('paginas/curso.css');

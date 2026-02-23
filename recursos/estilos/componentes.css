@@ -1,4 +1,19 @@
-/* Tarjetas */
+/**
+ * recursos/estilos/componentes.css
+ *
+ * Componentes reutilizables de la interfaz de usuario.
+ * Cada bloque está separado por una sección comentada.
+ *
+ * Secciones:
+ *   - Tarjetas
+ *   - Botones
+ *   - Formularios
+ *   - Alertas
+ *   - Layouts (cuadrículas, flex)
+ *   - Badges
+ */
+
+/* ===== Tarjetas ===== */
 .tarjeta {
     background: var(--color-superficie);
     border-radius: var(--radio-lg);
@@ -8,7 +23,8 @@
     backdrop-filter: blur(10px);
 }
 
-/* Botones */
+
+/* ===== Botones ===== */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -79,7 +95,8 @@
     padding: 0.25rem 0.5rem;
 }
 
-/* Formularios */
+
+/* ===== Formularios ===== */
 .grupo-formulario {
     margin-bottom: 1.5rem;
 }
@@ -107,7 +124,8 @@
     box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
 
-/* Alertas */
+
+/* ===== Alertas ===== */
 .alerta-error {
     background: #FEE2E2;
     color: #991B1B;
@@ -117,7 +135,8 @@
     text-align: center;
 }
 
-/* Layouts */
+
+/* ===== Layouts (cuadrículas y flex) ===== */
 .grid-2-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -135,7 +154,8 @@
     gap: 1rem;
 }
 
-/* Badges */
+
+/* ===== Badges ===== */
 .badge-categoria {
     background: #EEF2FF;
     color: var(--color-primario);

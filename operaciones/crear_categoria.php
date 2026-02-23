@@ -11,8 +11,8 @@ $error = '';
 $mensaje = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nombre = filter_input(INPUT_POST, 'nombre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $descripcion = filter_input(INPUT_POST, 'descripcion', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $nombre = trim(filter_input(INPUT_POST, 'nombre', FILTER_SANITIZE_STRING));
+    $descripcion = trim(filter_input(INPUT_POST, 'descripcion', FILTER_SANITIZE_STRING));
 
     if ($nombre) {
         try {
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p class="subtitulo-lista">Añadir una nueva categoría de cursos</p>
             </div>
             <div class="acciones-cabecera">
-                <a href="listar.php" class="btn btn-volver">Volver al Listado</a>
+                <a href="listar_categorias.php" class="btn btn-volver">Volver al Listado</a>
             </div>
         </div>
 
